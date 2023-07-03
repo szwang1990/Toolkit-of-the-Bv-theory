@@ -1,14 +1,48 @@
 # Toolkit-of-the-Bv-theory
 Test cases of the non-breaking wave-induced mixing (the Bv theory) on ocean and climate models. Check the derivation of Bv from [Qiao et al., 2004, GRL](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2004GL019824).
 ## 1 the MASNUM wave model
+The MASNUM wave model (MArine Science and NUmerical Modeling surface wave model) solves the wave energy spectrum balance equation and its characteristic equations in spherical coordinates and calculates the Bv paprameter, the non-breaking wave-induced mixing coefficient.
+### 1.1 download MASNUM code and inputdata from [here](https://zenodo.org/record/7787601)
+### 1.2 porting and configuration
+
 
 ## 2 The Bv effect in FESOM
 FESOM is the first mature global ocean general circulation model based on unstructured‐mesh methods. The Bv effect on improving upper-ocean simulation has been tested using [FESOM 1.4](https://fesom.de/models/fesom14/). Follow along the steps to reproduce the results of [Wang et al., 2019, JAMES](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018MS001494).
-### 2.1 download FESOM1.4 code and inputdata
-
+### 2.1 download FESOM1.4 code and inputdata from [here](https://zenodo.org/record/7787601)
+All the source files of FESOM1.4 is located in the `FESOM1.4/source/` directory
 ### 2.2 porting and configuration
+#### 2.2.1 configure FESOM1.4
+Go to `FESOM1.4/source/`, and edit `Makefile.in` according to your machine.
+Some important parameters you need to configure inlucde:
+
+`CC`: the C compiler
+
+`FC`: the Fortran compiler
+
+`MPIROOT`: root directory of your MPI library
+
+`NCDIR`: root directory where you install netcdf
+
+`PARMS_DIR`: directory of the PARMS package. Normally it should be `FESOM1.4/parms/`
+
+`METIS_LPATH`: directory of the METIS4.0 package. Normally it should be `FESOM1.4/metis-4.0/`
+
+#### 2.2.2 build FESOM1.4
+```
+cd FEOM1.4/metis
+make clean
+make
+cd FESOM1.4/parms
+make cleanall
+make
+cd FESOM1.4/source
+make clean
+make fesom
+```
+
 ## 3 FIO-ESM v2.1, an Earth system model with MASNUM incorporated
-### 3.1 download FIOESM v2.1 code and inputdata
+### 3.1 download FIOESM v2.1 code and inputdata from [here](https://zenodo.org/record/7787601)
+
 ### 3.2 porting
 The control structure follows that of CESM1.2. So if you are familiar with CESM porting, configurating FIO-ESM will be much easier.
 #### step 1. create `env_mach_specific.your_machine_name` file
