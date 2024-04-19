@@ -4,7 +4,7 @@ Test cases of the non-breaking wave-induced mixing (the Bv theory) on ocean and 
 The MASNUM wave model (MArine Science and NUmerical Modeling surface wave model) solves the wave energy spectrum balance equation and its characteristic equations in spherical coordinates and calculates the Bv paprameter, the non-breaking wave-induced mixing coefficient. A brief introduction to MASNUM, and the procedure to download, build and run it, can be found [here](http://fiocom.fio.org.cn/model/masnumwave/)
 ## 2 The Bv effect in FESOM
 FESOM is the first mature global ocean general circulation model based on unstructured‐mesh methods. The Bv effect on improving upper-ocean simulation has been tested using [FESOM 1.4](https://fesom.de/models/fesom14/). Follow along the steps to reproduce the results of [Wang et al., 2019, JAMES](https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2018MS001494).
-### 2.1 download FESOM1.4 code and inputdata from [here](1https://zenodo.org/records/10995185)
+### 2.1 download FESOM1.4 code and inputdata from [here](https://zenodo.org/records/10995185)
 All the source files of FESOM1.4 is located in the `FESOM1.4/source/` directory
 ### 2.2 porting and configuration
 #### step1 configure FESOM1.4
